@@ -48,7 +48,7 @@ export default function Login({ navigation }) {
                     onChangeText={setEmail}>
                 </TextInput>
                 
-                <Text style={styles.label}>SEU E-MAIL *</Text>
+                <Text style={styles.label}>TECNOLOGIAS *</Text>
                 <TextInput 
                     style={styles.input} 
                     placeholder="Tecnologias de interesse" 
@@ -77,13 +77,13 @@ const styles = StyleSheet.create({
     form: {
         alignSelf: 'stretch', /**Ocupa a largura inteira possivel */
         paddingHorizontal: 30,
-        marginTop30,
+        marginTop: 30
     },
 
     label: {
         fontWeight: 'bold',
         color: '#444',
-        marginBottom: 8,
+        marginBottom: 8
     },
 
     input: {
@@ -101,13 +101,13 @@ const styles = StyleSheet.create({
         height: 42,
         backgroundColor: '#f05a5b',
         justifyContent: 'center',
-        alignItems: ' center',
-        borderRadius: 2,
+        alignItems: 'center',
+        borderRadius: 2
     },
 
     buttonText: {
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 16
     },
 });
