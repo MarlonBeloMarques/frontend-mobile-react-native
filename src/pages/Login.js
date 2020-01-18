@@ -11,7 +11,7 @@ export default function Login({ navigation }) {
 
     useEffect(() => {
         AsyncStorage.getItem('user').then(user => {
-            if(user) {
+            if (user) {
                 navigation.navigate('List');
             }
         })
@@ -26,9 +26,9 @@ export default function Login({ navigation }) {
 
         await AsyncStorage.setItem('user', _id);
         await AsyncStorage.setItem('techs', techs);
-        
+
         navigation.navigate('List');
-    
+
     }
 
     return (
@@ -37,22 +37,22 @@ export default function Login({ navigation }) {
 
             <View style={styles.form}>
                 <Text style={styles.label}>SEU E-MAIL *</Text>
-                <TextInput 
-                    style={styles.input} 
-                    placeholder="Seu e-mail" 
-                    placeholderTextColor="#999" 
+                <TextInput
+                    style={styles.input}
+                    placeholder="Seu e-mail"
+                    placeholderTextColor="#999"
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false}
                     value={email}
                     onChangeText={setEmail}>
                 </TextInput>
-                
+
                 <Text style={styles.label}>TECNOLOGIAS *</Text>
-                <TextInput 
-                    style={styles.input} 
-                    placeholder="Tecnologias de interesse" 
-                    placeholderTextColor="#999" 
+                <TextInput
+                    style={styles.input}
+                    placeholder="Tecnologias de interesse"
+                    placeholderTextColor="#999"
                     autoCapitalize="words"
                     autoCorrect={false}
                     value={techs}
