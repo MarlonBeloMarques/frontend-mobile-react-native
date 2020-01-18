@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withNavigation } from 'react-navigation';
 import { SafeAreaView, Text, ScrollView, StyleSheet, Image, AsyncStorage } from 'react-native';
 
 import SpotList from '../components/SpotList';
@@ -15,6 +16,10 @@ export default function List() {
             setTechs(techsArray);
         })
     }, []);
+
+    function handleNavigate() {
+        NavigationPreloadManager.navigate('Book');
+    }
 
     return (
         <SafeAreaView style={styles.container}>

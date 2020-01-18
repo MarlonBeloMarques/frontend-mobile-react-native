@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
 import api from '../services/api';
 
-export default function SpotList({ tech }) {
+function SpotList({ tech, navigation }) {
     const [spots, setSpots] = useState([]);
 
     useEffect(() => {
@@ -12,11 +13,17 @@ export default function SpotList({ tech }) {
                 params: { tech }
             })
 
+            console.log(response.data);
+
             setSpots(response.data);
         }
 
         loadSpots();
     }, []);
+
+    function handleNavigation(id) {
+        navigation.navigate('Book', { id });
+    }
 
     return (
         <View style={styles.container}>
@@ -30,10 +37,10 @@ export default function SpotList({ tech }) {
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View style={styles.listItem}>
-                        <Image source={{ uri: item.thumbnail_url }} />
+                        <Image style={styles.thumbnail} source={{ uri: item.thumbnail_url }} />
                         <Text style={styles.company}>{item.company}</Text>
                         <Text style={styles.price}>{item.price ? `R$${item.price}/dia` : 'GRATUITO'}</Text>
-                        <TouchableOpacity onPress={() => {}} style={styles.button}>
+                        <TouchableOpacity onPress={() => handleNavigation(item._id)} style={styles.button}>
                             <Text style={styles.buttonText}>Solicitar reserva</Text>
                         </TouchableOpacity>
                     </View>
@@ -69,8 +76,9 @@ const styles = StyleSheet.create({
 
     thumbnail: {
         width: 200,
-        height120,
+        height: 120,
         resizeMode: 'cover',
+        backgroundColor: '#000',
         borderRadius: 2,
     },
 
@@ -102,3 +110,5 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
 });
+
+export default withNavigation(SpotList);
